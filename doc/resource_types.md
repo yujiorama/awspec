@@ -1,6 +1,7 @@
 # Resource Types
 
-[acm](#acm)
+[account_aliases](#account_aliases)
+| [acm](#acm)
 | [alb](#alb)
 | [alb_listener](#alb_listener)
 | [alb_target_group](#alb_target_group)
@@ -62,6 +63,20 @@
 | [waf_web_acl](#waf_web_acl)
 | [account](#account)
 
+## <a name="account_aliases">account_aliases</a>
+
+AccountAliases resource type.
+
+### exist
+
+```ruby
+describe account_aliases do
+  it { should exist }
+  its(:account_aliases) { should include('my-account-aliases') }
+end
+```
+
+### its(:account_aliases), its(:is_truncated), its(:marker)
 ## <a name="acm">acm</a>
 
 Acm resource type.
