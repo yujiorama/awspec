@@ -29,6 +29,7 @@
 | [elasticsearch](#elasticsearch)
 | [elastictranscoder_pipeline](#elastictranscoder_pipeline)
 | [elb](#elb)
+| [iam_account_password_policy](#iam_account_password_policy)
 | [iam_group](#iam_group)
 | [iam_policy](#iam_policy)
 | [iam_role](#iam_role)
@@ -1297,6 +1298,75 @@ end
 
 
 ### its(:health_check_target), its(:health_check_interval), its(:health_check_timeout), its(:health_check_unhealthy_threshold), its(:health_check_healthy_threshold), its(:load_balancer_name), its(:dns_name), its(:canonical_hosted_zone_name), its(:canonical_hosted_zone_name_id), its(:backend_server_descriptions), its(:availability_zones), its(:subnets), its(:vpc_id), its(:security_groups), its(:created_time), its(:scheme)
+## <a name="iam_account_password_policy">iam_account_password_policy</a>
+
+IamAccountPasswordPolicy resource type.
+
+### exist
+
+### be_allow_users_to_change_password
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_allow_users_to_change_password }
+end
+```
+
+
+### be_expire_passwords
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_expire_passwords }
+end
+```
+
+
+### be_hard_expiry
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should_not be_hard_expiry }
+end
+```
+
+### be_require_lowercase_characters
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_require_lowercase_characters }
+end
+```
+
+
+### be_require_numbers
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_require_numbers }
+end
+```
+
+
+### be_require_symbols
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_require_symbols }
+end
+```
+
+
+### be_require_uppercase_characters
+
+```ruby
+describe iam_account_password_policy('my-policy') do
+  it { should be_require_uppercase_characters }
+end
+```
+
+
+### its(:minimum_password_length), its(:require_symbols), its(:require_numbers), its(:require_uppercase_characters), its(:require_lowercase_characters), its(:allow_users_to_change_password), its(:expire_passwords), its(:max_password_age), its(:password_reuse_prevention), its(:hard_expiry)
 ## <a name="iam_group">iam_group</a>
 
 IamGroup resource type.

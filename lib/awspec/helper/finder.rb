@@ -35,6 +35,7 @@ require 'awspec/helper/finder/sqs'
 require 'awspec/helper/finder/cloudformation'
 require 'awspec/helper/finder/organizations_organization'
 require 'awspec/helper/finder/organizations_account'
+require 'awspec/helper/finder/iam_account_password_policy'
 
 require 'awspec/helper/finder/account_attributes'
 
@@ -79,6 +80,7 @@ module Awspec::Helper
     include Awspec::Helper::Finder::Cloudformation
     include Awspec::Helper::Finder::OrganizationsOrganization
     include Awspec::Helper::Finder::OrganizationsAccount
+    include Awspec::Helper::Finder::IamAccountPasswordPolicy
 
     CLIENTS = {
       ec2_client: Aws::EC2::Client,

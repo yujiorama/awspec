@@ -18,6 +18,7 @@ module Awspec
         route_table s3_bucket security_group ses_identity subnet vpc cloudfront_distribution
         elastictranscoder_pipeline waf_web_acl customer_gateway vpn_gateway vpn_connection internet_gateway acm
         cloudwatch_logs dynamodb_table eip sqs cloudformation_stack organizations_organization organizations_account
+        iam_account_password_policy
       )
 
       ACCOUNT_ATTRIBUTES = %w(
