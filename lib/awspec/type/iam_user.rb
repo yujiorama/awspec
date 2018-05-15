@@ -22,8 +22,13 @@ module Awspec::Type
                                          user_name: resource_via_client.user_name,
                                          policy_name: policy_name
                                        })
-      return JSON.parse(URI.decode(res.policy_document)) == JSON.parse(document) if document
+      return JSON.parse(CGI.unescape(res.policy_document)) == JSON.parse(document) if document
       res
+    end
+
+    def has_mfa_device?
+      res = iam_client.list_mfa_devices(user_name: @id)
+      res.is_truncated || !res.mfa_devices.empty?
     end
   end
 end

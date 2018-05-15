@@ -38,4 +38,6 @@ DOC
     its(:resource) { should be_an_instance_of(Awspec::ResourceReader) }
     its('resource.user_name') { should eq 'my-iam-user' }
   end
+
+  it { should have_mfa_device }
 end

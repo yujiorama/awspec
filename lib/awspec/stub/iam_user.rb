@@ -66,6 +66,17 @@ Aws.config[:iam] = {
       ],
       is_truncated: false,
       marker: nil
+    },
+    list_mfa_devices: {
+      marker: '',
+      is_truncated: false,
+      mfa_devices: [
+        {
+          user_name: 'my-iam-user',
+          serial_number: 'arn:aws:iam::012345678901:mfa/my-iam-user',
+          enable_date: Time.new(2015, 1, 2, 10, 00, 00, '+00:00')
+        }
+      ]
     }
   }
 }
