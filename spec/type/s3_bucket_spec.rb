@@ -103,4 +103,8 @@ describe s3_bucket('my-bucket') do
       status: 'Enabled'
     )
   end
+
+  its(:sse_algorithm) { should eq 'AES256' }
+  its(:sse_algorithm) { should_not eq 'aws:kms' }
+  its(:kms_master_key_id) { should be_nil }
 end

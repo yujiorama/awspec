@@ -120,5 +120,24 @@ module Awspec::Type
       blc = find_bucket_lifecycle_configuration(id)
       blc ? blc.rules : []
     end
+
+    def bucket_encryption
+      resp = s3_client.get_bucket_encryption(bucket: id)
+      return unless resp.server_side_encryption_configuration
+      rule = resp.server_side_encryption_configuration.rules.first
+      rule.apply_server_side_encryption_by_default
+    end
+
+    def sse_algorithm
+      encryption = bucket_encryption
+      return encryption.sse_algorithm if encryption
+      ''
+    end
+
+    def kms_master_key_id
+      encryption = bucket_encryption
+      return encryption.kms_master_key_id if encryption.sse_algorithm == 'aws:kms'
+      nil
+    end
   end
 end
