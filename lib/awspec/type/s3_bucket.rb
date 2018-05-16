@@ -126,6 +126,8 @@ module Awspec::Type
       return unless resp.server_side_encryption_configuration
       rule = resp.server_side_encryption_configuration.rules.first
       rule.apply_server_side_encryption_by_default
+    rescue Aws::S3::Errors::ServerSideEncryptionConfigurationNotFoundError => ignored
+      nil
     end
 
     def sse_algorithm
