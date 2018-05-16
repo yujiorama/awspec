@@ -116,7 +116,10 @@ module Awspec::Helper
     }
 
     CLIENT_OPTIONS = {
-      http_proxy: ENV['http_proxy'] || ENV['https_proxy'] || nil
+      http_proxy: ENV['http_proxy'] || ENV['https_proxy'] || nil,
+      retry_limit: (ENV['retry_limit'] || '2').to_i,
+      http_open_timeout: (ENV['hhtp_open_timeout'] || '5').to_i,
+      http_wire_trace: (ENV['http_wire_trace'] || 'false') == 'true'
     }
 
     CLIENTS.each do |method_name, client|
