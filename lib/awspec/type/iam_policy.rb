@@ -26,7 +26,7 @@ module Awspec::Type
     end
 
     def attached_to_group?(group_id = nil)
-      groups = select_attached_groups(@id)
+      groups = select_attached_groups(id)
       if group_id
         group = find_iam_group(group_id)
         return false unless group
@@ -39,7 +39,7 @@ module Awspec::Type
     end
 
     def attached_to_role?(role_id = nil)
-      roles = select_attached_roles(@id)
+      roles = select_attached_roles(id)
       if role_id
         role = find_iam_role(role_id)
         return false unless role
