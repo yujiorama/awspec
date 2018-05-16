@@ -138,7 +138,7 @@ module Awspec::Type
 
     def kms_master_key_id
       encryption = bucket_encryption
-      return encryption.kms_master_key_id if encryption.sse_algorithm == 'aws:kms'
+      return encryption.kms_master_key_id if encryption && encryption.sse_algorithm == 'aws:kms'
       nil
     end
   end
