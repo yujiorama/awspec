@@ -8,6 +8,18 @@ module Awspec::Helper
           topic.topic_arn.end_with?(suffix)
         end
       end
+
+      def find_sns_subscription_by_topic(topic_arn)
+        res = sns_client.list_subscriptions
+        found = []
+        loop do
+          found += res.subscriptions.find_all do |subscription|
+            subscription.topic_arn == topic_arn
+          end
+          (res.next_page? && res = res.next_page) || break
+        end
+        found
+      end
     end
   end
 end

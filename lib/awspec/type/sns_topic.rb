@@ -7,5 +7,15 @@ module Awspec::Type
     def id
       @id ||= resource_via_client.topic_arn if resource_via_client
     end
+
+    def has_subscription?(*endpoint)
+      subscriptions = find_sns_subscription_by_topic(id)
+      return false if subscriptions.empty?
+      endpoint.all? do |item|
+        subscriptions.any? do |subscription|
+          subscription.endpoint == item
+        end
+      end
+    end
   end
 end
