@@ -36,6 +36,7 @@ require 'awspec/helper/finder/cloudformation'
 require 'awspec/helper/finder/organizations_organization'
 require 'awspec/helper/finder/organizations_account'
 require 'awspec/helper/finder/iam_account_password_policy'
+require 'awspec/helper/finder/sns'
 
 require 'awspec/helper/finder/account_attributes'
 
@@ -81,6 +82,7 @@ module Awspec::Helper
     include Awspec::Helper::Finder::OrganizationsOrganization
     include Awspec::Helper::Finder::OrganizationsAccount
     include Awspec::Helper::Finder::IamAccountPasswordPolicy
+    include Awspec::Helper::Finder::Sns
 
     CLIENTS = {
       ec2_client: Aws::EC2::Client,
@@ -112,7 +114,8 @@ module Awspec::Helper
       dynamodb_client: Aws::DynamoDB::Client,
       sqs_client: Aws::SQS::Client,
       cloudformation_client: Aws::CloudFormation::Client,
-      organizations_client: Aws::Organizations::Client
+      organizations_client: Aws::Organizations::Client,
+      sns_client: Aws::SNS::Client
     }
 
     CLIENT_OPTIONS = {
