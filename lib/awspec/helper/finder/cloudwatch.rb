@@ -9,7 +9,7 @@ module Awspec::Helper
 
         res = cloudwatch_client.describe_alarms
         alarms = res.metric_alarms.select do |alarm|
-          alarm.alarm_arn == id
+          alarm.alarm_name == id || alarm.alarm_arn == id
         end
         alarms.single_resource(id)
       end

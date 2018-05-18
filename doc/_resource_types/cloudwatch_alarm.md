@@ -37,3 +37,12 @@ describe cloudwatch_alarm('my-cloudwatch-alarm') do
   it { should belong_to_metric('NumberOfProcesses').namespace('my-cloudwatch-namespace') }
 end
 ```
+
+### belong_to_dimension
+
+```ruby
+describe cloudwatch_alarm('my-cloudwatch-alarm') do
+  it { should belong_to_dimension('name') }
+  it { should belong_to_dimension('name').value('my-dimension') }
+end
+```
